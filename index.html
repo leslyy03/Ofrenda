@@ -65,7 +65,7 @@
         /* Flores naranjas */
         .flor1 { background: #ff8800; }
         .flor2 { background: #ffaa00; }
-        .flor3 { background: #f1c513; }
+        .flor3 { background: #ffcc00; }
         .flor-dark { background: #cc6600; }
         .flor-center { background: #664400; }
         
@@ -83,12 +83,12 @@
         .vela-red { background: #dd3333; }
         .vela-red2 { background: #bb2222; }
         .vela-dark { background: #881111; }
-        .flame1 { background: #e0e074; }
+        .flame1 { background: #ffff00; }
         .flame2 { background: #ffaa00; }
         .flame3 { background: #ff6600; }
         
         /* Marco */
-        .marco-gold { background: #c9a410; }
+        .marco-gold { background: #ffcc00; }
         .marco-dark { background: #aa8800; }
         .marco-inside { background: #665544; }
         .foto { background: #cccccc; }
@@ -142,3 +142,133 @@
             <canvas id="pixelArt" width="320" height="400"></canvas>
         </div>
     </div>
+
+    <script>
+        const canvas = document.getElementById('pixelArt');
+        const ctx = canvas.getContext('2d');
+        
+        // Paleta de colores
+        const colors = {
+            bg: '#2d1b4e',
+            bgDark: '#1a0f2e',
+            
+            // Flores
+            flor1: '#ff8800',
+            flor2: '#ffaa00',
+            flor3: '#ffcc00',
+            florDark: '#cc6600',
+            florCenter: '#664400',
+            
+            // Mesa
+            mesa1: '#7755aa',
+            mesa2: '#5533aa',
+            mesa3: '#442288',
+            
+            // Papel picado
+            papelPink: '#ff3399',
+            papelPurple: '#9955ff',
+            papelMagenta: '#ff6699',
+            
+            // Vela
+            velaRed: '#dd3333',
+            velaRed2: '#bb2222',
+            velaDark: '#881111',
+            flame1: '#ffff00',
+            flame2: '#ffaa00',
+            flame3: '#ff6600',
+            
+            // Marco
+            marcoGold: '#ffcc00',
+            marcoDark: '#aa8800',
+            marcoInside: '#665544',
+            foto: '#cccccc',
+            
+            // Cruz
+            cruzBrown: '#885533',
+            cruzDark: '#664422',
+            
+            // Vaso
+            vasoBlue: '#5599dd',
+            vasoBlue2: '#3377bb',
+            vasoLight: '#88ccff',
+            
+            // Pan
+            panBrown: '#cc7744',
+            panBrown2: '#aa5533',
+            panTop: '#ffddaa',
+            
+            // Calavera
+            skull: '#eeeeee',
+            skullShadow: '#cccccc',
+            skullBlack: '#222222',
+            skullDeco: '#ff3388',
+            
+            // Chocolate
+            choco: '#885533',
+            chocoDark: '#664422'
+        };
+
+        // Limpiar canvas
+        ctx.fillStyle = colors.bg;
+        ctx.fillRect(0, 0, 320, 400);
+
+        // Función para dibujar pixel
+        function pixel(x, y, color) {
+            ctx.fillStyle = color;
+            ctx.fillRect(x * 4, y * 4, 4, 4);
+        }
+
+        // Función para dibujar rectángulo
+        function rect(x, y, w, h, color) {
+            for (let i = 0; i < w; i++) {
+                for (let j = 0; j < h; j++) {
+                    pixel(x + i, y + j, color);
+                }
+            }
+        }
+
+        // Dibujar arco de flores
+        function drawFlower(x, y) {
+            // Pétalos
+            pixel(x-1, y, colors.flor1);
+            pixel(x+1, y, colors.flor1);
+            pixel(x, y-1, colors.flor2);
+            pixel(x, y+1, colors.flor2);
+            pixel(x-1, y-1, colors.flor3);
+            pixel(x+1, y-1, colors.flor3);
+            pixel(x-1, y+1, colors.flor3);
+            pixel(x+1, y+1, colors.flor3);
+            // Centro
+            pixel(x, y, colors.florCenter);
+        }
+
+        // Arco de flores
+        for (let i = 0; i < 40; i++) {
+            const angle = (Math.PI * i) / 39;
+            const x = 40 + Math.cos(angle) * 30;
+            const y = 25 - Math.sin(angle) * 15;
+            drawFlower(Math.floor(x), Math.floor(y));
+        }
+
+        // NIVEL 1
+        // Mesa nivel 1
+        rect(10, 35, 60, 25, colors.mesa1);
+        rect(11, 36, 58, 2, colors.mesa2);
+        rect(11, 57, 58, 2, colors.mesa3);
+
+        // Papel picado nivel 1
+        for (let i = 0; i < 6; i++) {
+            const x = 12 + i * 10;
+            const col = i % 3 === 0 ? colors.papelPink : i % 3 === 1 ? colors.papelPurple : colors.papelMagenta;
+            rect(x, 60, 8, 1, col);
+            // Picos
+            for (let p = 0; p < 4; p++) {
+                pixel(x + p * 2, 61, col);
+                pixel(x + p * 2, 62, col);
+            }
+        }
+
+       
+    </script>
+</body>
+</html>
