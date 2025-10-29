@@ -58,28 +58,28 @@
             flex-shrink: 0;
         }
 
-        /* Paleta de colores pixel art */
+       
         .bg { background: #2d1b4e; }
         .bg-dark { background: #1a0f2e; }
         
-        /* Flores naranjas */
+        
         .flor1 { background: #ff8800; }
         .flor2 { background: #ffaa00; }
         .flor3 { background: #ffcc00; }
         .flor-dark { background: #cc6600; }
         .flor-center { background: #664400; }
         
-        /* Mesa morada */
+       
         .mesa1 { background: #7755aa; }
         .mesa2 { background: #5533aa; }
         .mesa3 { background: #442288; }
         
-        /* Papel picado */
+       
         .papel-pink { background: #ff3399; }
         .papel-purple { background: #9955ff; }
         .papel-magenta { background: #ff6699; }
         
-        /* Vela */
+        
         .vela-red { background: #dd3333; }
         .vela-red2 { background: #bb2222; }
         .vela-dark { background: #881111; }
@@ -87,33 +87,33 @@
         .flame2 { background: #ffaa00; }
         .flame3 { background: #ff6600; }
         
-        /* Marco */
+      
         .marco-gold { background: #ffcc00; }
         .marco-dark { background: #aa8800; }
         .marco-inside { background: #665544; }
         .foto { background: #cccccc; }
         
-        /* Cruz */
+        
         .cruz-brown { background: #885533; }
         .cruz-dark { background: #664422; }
         
-        /* Vaso */
+       
         .vaso-blue { background: #5599dd; }
         .vaso-blue2 { background: #3377bb; }
         .vaso-light { background: #88ccff; }
         
-        /* Pan */
+      
         .pan-brown { background: #cc7744; }
         .pan-brown2 { background: #aa5533; }
         .pan-top { background: #ffddaa; }
         
-        /* Calavera */
+        
         .skull { background: #eeeeee; }
         .skull-shadow { background: #cccccc; }
         .skull-black { background: #222222; }
         .skull-deco { background: #ff3388; }
         
-        /* Calavera chocolate */
+      
         .choco { background: #885533; }
         .choco-dark { background: #664422; }
 
@@ -147,29 +147,29 @@
         const canvas = document.getElementById('pixelArt');
         const ctx = canvas.getContext('2d');
         
-        // Paleta de colores
+        
         const colors = {
             bg: '#2d1b4e',
             bgDark: '#1a0f2e',
             
-            // Flores
+           
             flor1: '#ff8800',
             flor2: '#ffaa00',
             flor3: '#ffcc00',
             florDark: '#cc6600',
             florCenter: '#664400',
             
-            // Mesa
+            
             mesa1: '#7755aa',
             mesa2: '#5533aa',
             mesa3: '#442288',
             
-            // Papel picado
+           
             papelPink: '#ff3399',
             papelPurple: '#9955ff',
             papelMagenta: '#ff6699',
             
-            // Vela
+           
             velaRed: '#dd3333',
             velaRed2: '#bb2222',
             velaDark: '#881111',
@@ -177,48 +177,48 @@
             flame2: '#ffaa00',
             flame3: '#ff6600',
             
-            // Marco
+           
             marcoGold: '#ffcc00',
             marcoDark: '#aa8800',
             marcoInside: '#665544',
             foto: '#cccccc',
             
-            // Cruz
+           
             cruzBrown: '#885533',
             cruzDark: '#664422',
             
-            // Vaso
+           
             vasoBlue: '#5599dd',
             vasoBlue2: '#3377bb',
             vasoLight: '#88ccff',
             
-            // Pan
+           
             panBrown: '#cc7744',
             panBrown2: '#aa5533',
             panTop: '#ffddaa',
             
-            // Calavera
+           
             skull: '#eeeeee',
             skullShadow: '#cccccc',
             skullBlack: '#222222',
             skullDeco: '#ff3388',
             
-            // Chocolate
+           
             choco: '#885533',
             chocoDark: '#664422'
         };
 
-        // Limpiar canvas
+       
         ctx.fillStyle = colors.bg;
         ctx.fillRect(0, 0, 320, 400);
 
-        // Función para dibujar pixel
+       
         function pixel(x, y, color) {
             ctx.fillStyle = color;
             ctx.fillRect(x * 4, y * 4, 4, 4);
         }
 
-        // Función para dibujar rectángulo
+       
         function rect(x, y, w, h, color) {
             for (let i = 0; i < w; i++) {
                 for (let j = 0; j < h; j++) {
@@ -227,9 +227,9 @@
             }
         }
 
-        // Dibujar arco de flores
+        
         function drawFlower(x, y) {
-            // Pétalos
+            
             pixel(x-1, y, colors.flor1);
             pixel(x+1, y, colors.flor1);
             pixel(x, y-1, colors.flor2);
@@ -238,11 +238,11 @@
             pixel(x+1, y-1, colors.flor3);
             pixel(x-1, y+1, colors.flor3);
             pixel(x+1, y+1, colors.flor3);
-            // Centro
+           
             pixel(x, y, colors.florCenter);
         }
 
-        // Arco de flores
+        
         for (let i = 0; i < 40; i++) {
             const angle = (Math.PI * i) / 39;
             const x = 40 + Math.cos(angle) * 30;
@@ -250,13 +250,12 @@
             drawFlower(Math.floor(x), Math.floor(y));
         }
 
-        // NIVEL 1
-        // Mesa nivel 1
+        
         rect(10, 35, 60, 25, colors.mesa1);
         rect(11, 36, 58, 2, colors.mesa2);
         rect(11, 57, 58, 2, colors.mesa3);
 
-        // Papel picado nivel 1
+        
         for (let i = 0; i < 6; i++) {
             const x = 12 + i * 10;
             const col = i % 3 === 0 ? colors.papelPink : i % 3 === 1 ? colors.papelPurple : colors.papelMagenta;
@@ -266,9 +265,167 @@
                 pixel(x + p * 2, 61, col);
                 pixel(x + p * 2, 62, col);
             }
+         }
+
+       
+        rect(15, 40, 12, 15, colors.marcoGold);
+        rect(17, 42, 8, 11, colors.marcoInside);
+        rect(18, 43, 6, 9, colors.foto);
+        pixel(20, 47, colors.skullBlack);
+        pixel(22, 47, colors.skullBlack);
+
+       
+        rect(32, 45, 4, 10, colors.velaRed);
+        rect(33, 45, 2, 10, colors.velaRed2);
+        rect(32, 55, 4, 1, colors.velaDark);
+        pixel(33, 44, colors.skullBlack);
+        pixel(33, 43, colors.flame2);
+        pixel(33, 42, colors.flame1);
+        pixel(33, 41, colors.flame3);
+
+       
+        rect(40, 42, 4, 14, colors.cruzBrown);
+        rect(38, 47, 8, 4, colors.cruzBrown);
+        rect(41, 43, 2, 12, colors.cruzDark);
+        rect(39, 48, 6, 2, colors.cruzDark);
+
+      
+        rect(50, 45, 4, 10, colors.velaRed);
+        rect(51, 45, 2, 10, colors.velaRed2);
+        rect(50, 55, 4, 1, colors.velaDark);
+        pixel(51, 44, colors.skullBlack);
+        pixel(51, 43, colors.flame2);
+        pixel(51, 42, colors.flame1);
+        pixel(51, 41, colors.flame3);
+
+       
+        rect(58, 40, 12, 15, colors.marcoGold);
+        rect(60, 42, 8, 11, colors.marcoInside);
+        rect(61, 43, 6, 9, colors.foto);
+        pixel(63, 47, colors.skullBlack);
+        pixel(65, 47, colors.skullBlack);
+
+        
+        rect(5, 70, 70, 25, colors.mesa2);
+        rect(6, 71, 68, 2, colors.mesa1);
+        rect(6, 92, 68, 2, colors.mesa3);
+
+        
+        for (let i = 0; i < 7; i++) {
+            const x = 7 + i * 10;
+            const col = i % 3 === 0 ? colors.papelPink : i % 3 === 1 ? colors.papelPurple : colors.papelMagenta;
+            rect(x, 95, 8, 1, col);
+            for (let p = 0; p < 4; p++) {
+                pixel(x + p * 2, 96, col);
+                pixel(x + p * 2, 97, col);
+            }
+        }
+
+        
+        rect(10, 76, 8, 10, colors.skull);
+        rect(11, 77, 6, 8, colors.skullShadow);
+      
+        rect(12, 79, 2, 3, colors.skullBlack);
+        rect(15, 79, 2, 3, colors.skullBlack);
+       
+        pixel(13, 83, colors.skullBlack);
+        pixel(14, 83, colors.skullBlack);
+        pixel(14, 84, colors.skullBlack);
+       
+        pixel(14, 76, colors.skullDeco);
+        pixel(13, 76, colors.skullDeco);
+        pixel(15, 76, colors.skullDeco);
+
+       
+        rect(22, 77, 5, 10, colors.vasoBlue2);
+        rect(23, 78, 3, 8, colors.vasoBlue);
+        pixel(24, 79, colors.vasoLight);
+        pixel(24, 80, colors.vasoLight);
+
+       
+        rect(32, 80, 10, 6, colors.panBrown);
+        rect(33, 81, 8, 4, colors.panBrown2);
+        
+        rect(35, 82, 4, 1, colors.panTop);
+        rect(36, 80, 2, 6, colors.panTop);
+
+       
+        rect(45, 78, 4, 9, colors.velaRed);
+        rect(46, 78, 2, 9, colors.velaRed2);
+        rect(45, 87, 4, 1, colors.velaDark);
+        pixel(46, 77, colors.skullBlack);
+        pixel(46, 76, colors.flame2);
+        pixel(46, 75, colors.flame1);
+        pixel(46, 74, colors.flame3);
+
+      
+        rect(53, 77, 10, 12, colors.marcoGold);
+        rect(55, 79, 6, 8, colors.marcoInside);
+        rect(56, 80, 4, 6, colors.foto);
+        pixel(57, 82, colors.skullBlack);
+        pixel(59, 82, colors.skullBlack);
+
+       
+        rect(66, 77, 5, 10, colors.vasoBlue2);
+        rect(67, 78, 3, 8, colors.vasoBlue);
+        pixel(68, 79, colors.vasoLight);
+        pixel(68, 80, colors.vasoLight);
+
+       
+        rect(10, 88, 8, 6, colors.choco);
+        rect(11, 88, 6, 5, colors.chocoDark);
+        
+        pixel(12, 89, colors.skullBlack);
+        pixel(15, 89, colors.skullBlack);
+       
+        pixel(13, 91, colors.skullBlack);
+        pixel(14, 91, colors.skullBlack);
+
+        
+        rect(20, 82, 4, 9, colors.velaRed);
+        rect(21, 82, 2, 9, colors.velaRed2);
+        rect(20, 91, 4, 1, colors.velaDark);
+        pixel(21, 81, colors.skullBlack);
+        pixel(21, 80, colors.flame2);
+        pixel(21, 79, colors.flame1);
+
+        
+        const floorY = 102;
+        for (let i = 0; i < 15; i++) {
+            const x = 8 + i * 5;
+            drawFlower(x, floorY);
         }
 
        
+        let frame = 0;
+        function animate() {
+            frame++;
+            
+            
+            const flamePositions = [
+                {x: 33, y: 41},
+                {x: 51, y: 41},
+                {x: 46, y: 74},
+                {x: 21, y: 79}
+            ];
+            
+            flamePositions.forEach(pos => {
+                const offset = Math.sin(frame * 0.1) > 0 ? 0 : 1;
+                
+                pixel(pos.x, pos.y, colors.bg);
+                pixel(pos.x, pos.y + 1, colors.bg);
+                pixel(pos.x, pos.y + 2, colors.bg);
+                
+                
+                pixel(pos.x, pos.y + offset, colors.flame3);
+                pixel(pos.x, pos.y + 1 + offset, colors.flame1);
+                pixel(pos.x, pos.y + 2 + offset, colors.flame2);
+            });
+            
+            setTimeout(() => requestAnimationFrame(animate), 200);
+        }
+        
+        animate();
     </script>
 </body>
 </html>
